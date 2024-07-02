@@ -1,0 +1,77 @@
+@startuml
+skinparam sequenceArrowThickness 2
+skinparam maxmessagesize 40
+
+actor Usuario
+participant "Administrador del sistema" as A
+participant "EntradaSalida" as E
+participant "Cliente" as C
+participant "sistema BidCom" as S
+participant "Producto" as P
+
+Usuario -> A: menu(SistemaBidCom sistema)
+activate A
+
+A -> E: leerCaracter(String texto)
+activate E
+return opc:char
+
+alt choise = '2'
+
+A -> E: leerCaracter(String texto)
+
+activate E
+
+return opcion1 : char
+
+alt subchoice = '1'
+
+A -> S: crearProducto()
+activate S
+S -> E: leerCaracter(String texto)
+
+activate E
+return codigo : String
+
+
+
+loop : buscarProducto(String codigo) != null
+S -> E: mostrarAdvertencia(String texto)
+S -> E: leerCaracter(String texto)
+
+activate E
+return codigo : String
+
+end
+
+S -> E: leerString(String texto)
+activate E
+E --> S: nombre : String
+deactivate E
+
+
+S -> E: leerString(String texto)
+activate E
+E --> S: modelo : String
+deactivate E
+
+
+S -> E: leerString(String texto)
+activate E
+E --> S: descripcion : String
+deactivate E
+
+S -> E: leerDecimal(String texto)
+activate E
+E --> S: precio : Double
+deactivate E
+
+S -->> P: <<create>>
+S -> S: getProductos().add(Producto producto)
+
+S -> S: getListaDePrecios.agregarPrecio(Producto producto, Double precio)
+S -> A
+deactivate S
+
+end
+end

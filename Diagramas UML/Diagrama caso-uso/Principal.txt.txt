@@ -1,0 +1,10 @@
+@startuml
+(Ingresar mediante contraseña y nombre) as (iniciarSesion)
+
+left to right direction
+Usuario --|> (iniciarSesion)
+(iniciarSesion) --|> AdministradorSistema
+(iniciarSesion) --|> RepresentanteDeVentas
+(iniciarSesion) --|> Cliente
+
+@enduml

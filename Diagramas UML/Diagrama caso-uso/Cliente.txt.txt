@@ -1,0 +1,11 @@
+@startuml
+skin rose
+left to right direction
+rectangle "Menu de Cliente" {
+  usecase "cerrar sesion" as MS1
+  usecase "Consulta pedidos" as MS2
+}
+
+Cliente --|> MS1
+Cliente --|> MS2
+@enduml

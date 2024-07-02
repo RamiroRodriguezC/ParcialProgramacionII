@@ -1,0 +1,74 @@
+@startuml
+
+hide circle
+skin rose
+
+class Constante{}0
+class EntradaSalida{
+
+}
+
+class Control{
+
+}
+
+class SistemaBidCom{
+
+}
+
+abstract class Usuario {
+}
+class AdministradorDelSistema{
+
+}
+class RepresentanteDeVentas{
+
+}
+class "Cliente"{
+  
+}
+class Producto{
+
+}
+class Pedido{
+
+}
+
+class FactoriaDeUsuarios{
+
+}
+class ListaDePrecios{
+
+}
+
+class Almacen{
+
+}
+
+class Item{
+
+}
+
+Usuario <|-- Cliente
+Usuario <|-- AdministradorDelSistema
+Usuario <|-- RepresentanteDeVentas
+
+Cliente "1" *-- "n" Pedido : pedidos
+
+SistemaBidCom  "1" *-- "n"  Usuario : usuarios 
+SistemaBidCom "1" *-- "1" Almacen
+SistemaBidCom  "1" *-- "1" ListaDePrecios
+SistemaBidCom  "1" *-- "n"  Producto : productos
+
+AdministradorDelSistema ..> FactoriaDeUsuarios
+RepresentanteDeVentas ..> FactoriaDeUsuarios
+
+Almacen "1" *-- "n" Producto : - inventario
+ListaDePrecios "1" *-- "n" Producto : - precios
+Pedido "1" *-- "n" Item : - items
+Item "1" o-- "1" Producto
+
+
+
+
+Control ..> SistemaBidCom

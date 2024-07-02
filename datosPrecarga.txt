@@ -1,0 +1,93 @@
+Administradores:
+
+[1] : 
+	Username: AngelSC
+	Password: abc123
+[2] : 
+	Username: PabloGon
+	Password: 123abc
+
+Representantes de ventas:
+
+[1] : 
+	Username: Martin23
+	Password: fcai4ever
+
+[2] : 
+	Username: TarekFaakd
+	Password: DM22
+
+Cliente:
+
+[1] :
+	Username: GrifoFG
+	Password: ernie12
+	      ID: 1
+	  Nombre: Pedro
+	  Correo: pGrif@gmail.com
+       Direccion: Spooner 123
+	Telefono: 11 2233 4455
+
+[2] :
+	Username: RickyCTN
+	Password: noche10
+	      ID: 2
+	  Nombre: Ricardo
+	  Correo: rickyC@gmail.com
+       Direccion: milito 25
+	Telefono: 11 2491 2387
+
+
+[3] :
+	Username: MTbsf 
+	Password: trestristestigres
+	      ID: 3
+	  Nombre: Mateo
+	  Correo: matutete@gmail.com
+       Direccion: combatientes de malvinas 123
+	Telefono: 11 3243 4332
+
+Productos:
+[1] :
+	ID: 1
+	Nombre: Telefono celular Celular Samsung Galaxy S21
+	Modelo: S21 Fe 5G
+	Descripcion: Fotografía profesional en tu bolsillo,Batería de duración superior, Capacidad y eficiencia
+
+	<<En lista de precios>>
+	Precio: 1.132.999
+
+	<<En Almacen>>
+	Existencias: 5
+
+[2] :
+	ID: 2
+	Nombre: Auriculares Bluetooth
+	Modelo: QCY T19
+	Descripcion: Auriculares manos Libres Inalambrico Negro
+
+	<<En lista de precios>>
+	Precio: 60.000
+
+	<<En Almacen>>
+	Existencias: 25
+
+[3]:
+	ID: 3
+	Nombre: Aspiradora Robot
+	Modelo: Irobot Roomba 960
+	Descripcion: Limpieza absoluta, en paquete reducido (¡y automatico!)
+
+	<<En lista de precios>>
+	Precio: 899.999
+
+	<<En Almacen>>
+	Existencias: 10
+
+Pedidos:
+
+[1] (MTbsf)
+
+	codigoProd: [2] (Auris Bluetooth)
+	cantProd: 3
+

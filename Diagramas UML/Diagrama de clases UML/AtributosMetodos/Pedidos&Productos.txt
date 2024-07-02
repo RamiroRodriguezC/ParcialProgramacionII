@@ -1,0 +1,43 @@
+@startuml
+
+skin rose
+hide circle
+skinparam classAttributeIconSize 0
+
+package "Pedidos & Productos" {
+class Producto{
+  - codigoProducto : String
+  - nombre : String
+  - modelo : String
+  - descripcion : String
+  
+  + producto(codigoDeProducto : String, nombre: String,modelo: String , descripcion : String)
+  
+}
+class Pedido{
+  - estado :Integer
+  - fechaHoraCreacion : date
+  + agregarItem(producto: Producto, cantidad : int, precio : Double): void
+  + actualizarEstado(nuevoEstado : int)
+  + registrarFechaYHora() : void
+}
+class Item{
+  - cantidad : int
+  - precio : Double 
+}
+
+class Almacen{
+  + Almacen()
+  + agregarExistencias(producto : Producto, inventario : Integer) : void
+  + getExistencias(producto : Producto) : int
+  + consultarExistencias() : void
+}
+
+
+class ListaDePrecios{
+  - {final} precios : Map<Producto, Double>
+  + listaDePrecios() 
+  + agregarPrecio(producto : Producto, precio : Double)
+  + getPrecio(producto : Producto) : Double
+}
+}

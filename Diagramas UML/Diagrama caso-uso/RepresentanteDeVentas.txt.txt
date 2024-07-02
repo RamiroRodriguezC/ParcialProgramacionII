@@ -1,0 +1,41 @@
+rectangle "Menu de RepresentanteDeVentas" {
+  usecase "cerrar sesion" as MR1
+  usecase "Gestion pedidos" as MR2
+  usecase "Gestion clientes" as MR3
+  usecase "Consulta sistema" as MR4
+}
+
+rectangle "Gestion clientes" {
+  usecase "volver" as SMRGP1
+  usecase "Crear Cliente" as SMRGP2
+  usecase "Baja Cliente" as SMRGP3
+}
+
+rectangle "Gestion pedidos" {
+  usecase "volver" as SMRGC1
+  usecase "Crear pedido" as SMRGC2
+  usecase "Dar pedido de baja" as SMRGC3
+}
+
+rectangle "Consulta Sistema" {
+  usecase "volver" as SMRCS1
+  usecase "Crear pedido" as SMRCS2
+  usecase "Dar pedido de baja" as SMRCS3
+}
+
+RepresentanteDeVentas --|> MR1
+RepresentanteDeVentas --|> MR2
+RepresentanteDeVentas --|> MR3
+RepresentanteDeVentas --|> MR4
+
+MR2 --|> SMRGP1
+MR2 --|> SMRGP2
+MR2 --|> SMRGP3
+
+MR3 --|> SMRGC1
+MR3 --|> SMRGC2
+MR3 --|> SMRGC3
+
+MR4 --|> SMRCS1
+MR4 --|> SMRCS2
+MR4 --|> SMRCS3

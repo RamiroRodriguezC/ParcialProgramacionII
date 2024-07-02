@@ -1,0 +1,46 @@
+@startuml
+
+skin rose
+hide circle
+skinparam classAttributeIconSize 0
+
+package "Usuarios" {
+abstract class Usuario {
+   - username : String
+   - password : String
+   
+   ---
+   + {abstract} menu(sistema : SistemaBidCom) : Boolean
+}
+
+class AdministradorDelSistema{
+  + AdministradorDelSistema(username : String, passowrd : String)
+  + AdministradorDelSistema()
+}
+
+class RepresentanteDeVentas{
+  + RepresentanteDeVentas()
+}
+
+class "Cliente"{
+  - codigoUnico : String
+  - nombre : String
+  - direccion : String
+  - correo : String
+  - numeroTelefono : String
+  
+  + Cliente()
+  + crearPedido(sistema : sistemaBidCom) : void
+  + bajaPedido(sistema : sistemaBidCom) : void
+  + consultaPedidos() : void
+}
+class FactoriaDeUsuarios{
+  +crearUsuario(UsuarioID : String, sistema: SistemaBidCom ) : Usuario
+  -solicitarUsername(texto: String, sistema : SistemaBidCom) : String
+  -solicitarPassword(texto: String) :String
+  -solicitarIDCliente(texto: String, sistema : SistemaBidCom) : String
+  -solicitarNombre(texto: String) : String
+  -solicitarCorreoElectronico(texto: String) : String
+  -solicitarNumeroTelefonico(texto: String) : String
+}
+}

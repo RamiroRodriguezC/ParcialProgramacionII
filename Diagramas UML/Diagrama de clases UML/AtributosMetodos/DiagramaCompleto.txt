@@ -1,0 +1,129 @@
+@startuml
+
+skin rose
+hide circle
+
+skinparam classSpacing 5
+
+package "Usuarios" {
+abstract class Usuario {
+   - username : String
+   - password : String
+   
+   ---
+   + {abstract} menu(sistema : SistemaBidCom) : Boolean
+}
+
+class AdministradorDelSistema{
+  + AdministradorDelSistema(username : String, passowrd : String)
+  + AdministradorDelSistema()
+}
+
+class RepresentanteDeVentas{
+  + RepresentanteDeVentas()
+}
+
+class "Cliente"{
+  - codigoUnico : String
+  - nombre : String
+  - direccion : String
+  - correo : String
+  - numeroTelefono : String
+  
+  + Cliente()
+  + crearPedido(sistema : sistemaBidCom) : void
+  + bajaPedido(sistema : sistemaBidCom) : void
+  + consultaPedidos() : void
+}
+class FactoriaDeUsuarios{
+  +crearUsuario(UsuarioID : String, sistema: SistemaBidCom ) : Usuario
+  -solicitarUsername(texto: String, sistema : SistemaBidCom) : String
+  -solicitarPassword(texto: String) :String
+  -solicitarIDCliente(texto: String, sistema : SistemaBidCom) : String
+  -solicitarNombre(texto: String) : String
+  -solicitarCorreoElectronico(texto: String) : String
+  -solicitarNumeroTelefonico(texto: String) : String
+}
+}
+package "Pedidos & Productos" {
+class Producto{
+  - codigoProducto : String
+  - nombre : String
+  - modelo : String
+  - descripcion : String
+  
+  + producto(codigoDeProducto : String, nombre: String,modelo: String , descripcion : String)
+  
+}
+class Pedido{
+  - estado :Integer
+  - fechaHoraCreacion : date
+  + agregarItem(producto: Producto, cantidad : int, precio : Double): void
+  + actualizarEstado(nuevoEstado : int)
+  + registrarFechaYHora() : void
+}
+class Item{
+  - cantidad : int
+  - precio : Double 
+}
+
+class Almacen{
+  + Almacen()
+  + agregarExistencias(producto : Producto, inventario : Integer) : void
+  + getExistencias(producto : Producto) : int
+  + consultarExistencias() : void
+}
+
+
+class ListaDePrecios{
+  - {final} precios : Map<Producto, Double>
+  + listaDePrecios() 
+  + agregarPrecio(producto : Producto, precio : Double)
+  + getPrecio(producto : Producto) : Double
+}
+}
+
+package "SistemaBidCom"{
+class Constante
+
+class EntradaSalida{
+  +leerString(texto : String) : String
+  +leerBoolean(texto: String) : Boolean
+  +leerChar(texto : String) : Char
+  +leerFloat(texto : String) : Double
+  +leerEntero(texto : String) : Int
+  +titulo(titulo : String) : String
+  +mostrarMensaje(mensaje: String)
+  +mostrarAdvertencia(mensaje:String)
+}
+
+class Control{
+  +ejecutar() : void
+  -arranqueInicial() : void
+  -iniciarSesion(): void
+}
+
+class SistemaBidCom{
+  + sistemaBidCom()
+  + deSerializar(a : String) : SistemaBidCom
+  + serializar(a : String) : void
+  + buscarUsuario(username : String) : Usuario
+  + buscarClienteID(IDCliente : String) : Cliente
+  + eliminarUsuario(username : String) : void
+  + crearProducto() : void
+  + buscarProducto(codigo : String) : buscarProducto
+  + agregarExistenciasAlmacen() : void
+  + actualizarPrecio() : void
+  + consultarUsuarios(tipoUsuario : String) : void
+  + consultarUsuarios() : void
+  + consultarProductos() : void
+  + consultarPrecios() : void
+  + agregarUsuario(usuario : Usuario) : void
+}
+}
+
+
+
+
+
+@enduml

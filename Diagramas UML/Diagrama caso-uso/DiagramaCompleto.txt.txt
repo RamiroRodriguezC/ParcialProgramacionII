@@ -1,0 +1,124 @@
+@startuml
+(Ingresar mediante contraseña y nombre) as (iniciarSesion)
+
+left to right direction
+Usuario --|> (iniciarSesion)
+(iniciarSesion) --|> AdministradorSistema
+(iniciarSesion) --|> RepresentanteDeVentas
+(iniciarSesion) --|> Cliente
+
+rectangle "Menu de Administrador del sistema" {
+  usecase "Cerrar Sesion" as MA5
+  usecase "Salir del sistema" as MA1
+  usecase "Gestion usuarios" as MA2
+  usecase "Gestion productos" as MA3
+  usecase "Consulta sistema" as MA4
+  
+}
+
+rectangle "Gestion Usuarios" {
+  usecase "volver" as SMAGU1
+  usecase "baja usuario" as SMAGU5
+  usecase "Alta administrador" as SMAGU2
+  usecase "Alta Representante de ventas" as SMAGU3
+  usecase "Alta cliente" as SMAGU4
+  
+}
+
+rectangle "Gestion productos" {
+  usecase "volver" as SMAGP1
+  usecase "Alta producto" as SMAGP2
+  usecase "Agregar existencias" as SMAGP3
+  usecase "Actualizar precio" as SMAGP4
+}
+
+rectangle "Consulta sistema" {
+  usecase "volver" as SMACS1
+  usecase "Consulta Usuarios" as SMACS2
+  usecase "Consulta clientes" as SMACS3
+  usecase "Consulta Administradores" as SMACS4
+  usecase "Consulta Representantes" as SMACS5
+  usecase "Consulta producto" as SMACS6
+  usecase "Consulta existencias" as SMACS7
+  usecase "Lista de precios" as SMACS8
+}
+
+
+
+AdministradorSistema --|> MA1
+AdministradorSistema --|> MA2
+AdministradorSistema --|> MA3
+AdministradorSistema --|> MA4 
+AdministradorSistema --|> MA5
+
+
+MA2 --|> SMAGU1 
+MA2 --|> SMAGU2
+MA2 --|> SMAGU3
+MA2 --|> SMAGU4
+MA2 --|> SMAGU5
+
+MA3 --|> SMAGP1 
+MA3 --|> SMAGP2
+MA3 --|> SMAGP3
+MA3 --|> SMAGP4
+
+MA4 --|> SMACS1 
+MA4 --|> SMACS2
+MA4 --|> SMACS3
+MA4 --|> SMACS4
+MA4 --|> SMACS5
+MA4 --|> SMACS6
+MA4 --|> SMACS7
+MA4 --|> SMACS8
+
+rectangle "Menu de RepresentanteDeVentas" {
+  usecase "cerrar sesion" as MR1
+  usecase "Gestion pedidos" as MR2
+  usecase "Gestion clientes" as MR3
+  usecase "Consulta sistema" as MR4
+}
+
+rectangle "Gestion clientes" {
+  usecase "volver" as SMRGP1
+  usecase "Crear Cliente" as SMRGP2
+  usecase "Baja Cliente" as SMRGP3
+}
+
+rectangle "Gestion pedidos" {
+  usecase "volver" as SMRGC1
+  usecase "Crear pedido" as SMRGC2
+  usecase "Dar pedido de baja" as SMRGC3
+}
+
+rectangle "Consulta Sistema" {
+  usecase "volver" as SMRCS1
+  usecase "Crear pedido" as SMRCS2
+  usecase "Dar pedido de baja" as SMRCS3
+}
+
+RepresentanteDeVentas --|> MR1
+RepresentanteDeVentas --|> MR2
+RepresentanteDeVentas --|> MR3
+RepresentanteDeVentas --|> MR4
+
+MR2 --|> SMRGP1
+MR2 --|> SMRGP2
+MR2 --|> SMRGP3
+
+MR3 --|> SMRGC1
+MR3 --|> SMRGC2
+MR3 --|> SMRGC3
+
+MR4 --|> SMRCS1
+MR4 --|> SMRCS2
+MR4 --|> SMRCS3
+
+rectangle "Menu de Cliente" {
+  usecase "cerrar sesion" as MS1
+  usecase "Consulta pedidos" as MS2
+}
+
+Cliente --|> MS1
+Cliente --|> MS2
+@enduml

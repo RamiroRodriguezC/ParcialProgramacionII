@@ -1,0 +1,44 @@
+@startuml
+
+skin rose
+hide circle
+skinparam classAttributeIconSize 0
+
+package "SistemaBidCom"{
+class Constante
+
+class EntradaSalida{
+  +leerString(texto : String) : String
+  +leerBoolean(texto: String) : Boolean
+  +leerChar(texto : String) : Char
+  +leerFloat(texto : String) : Double
+  +leerEntero(texto : String) : Int
+  +titulo(titulo : String) : String
+  +mostrarMensaje(mensaje: String)
+  +mostrarAdvertencia(mensaje:String)
+}
+
+class Control{
+  +ejecutar() : void
+  -arranqueInicial() : void
+  -iniciarSesion(): void
+}
+
+class SistemaBidCom{
+  + sistemaBidCom()
+  + deSerializar(a : String) : SistemaBidCom
+  + serializar(a : String) : void
+  + buscarUsuario(username : String) : Usuario
+  + buscarClienteID(IDCliente : String) : Cliente
+  + eliminarUsuario(username : String) : void
+  + crearProducto() : void
+  + buscarProducto(codigo : String) : buscarProducto
+  + agregarExistenciasAlmacen() : void
+  + actualizarPrecio() : void
+  + consultarUsuarios(tipoUsuario : String) : void
+  + consultarUsuarios() : void
+  + consultarProductos() : void
+  + consultarPrecios() : void
+  + agregarUsuario(usuario : Usuario) : void
+}
+}

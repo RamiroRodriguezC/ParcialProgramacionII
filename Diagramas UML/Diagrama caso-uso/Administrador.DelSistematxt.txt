@@ -1,0 +1,67 @@
+@startuml
+skin rose
+left to right direction
+rectangle "Menu de Administrador del sistema" {
+  usecase "Cerrar Sesion" as MA5
+  usecase "Salir del sistema" as MA1
+  usecase "Gestion usuarios" as MA2
+  usecase "Gestion productos" as MA3
+  usecase "Consulta sistema" as MA4
+  
+}
+
+rectangle "Gestion Usuarios" {
+  usecase "volver" as SMAGU1
+  usecase "baja usuario" as SMAGU5
+  usecase "Alta administrador" as SMAGU2
+  usecase "Alta Representante de ventas" as SMAGU3
+  usecase "Alta cliente" as SMAGU4
+  
+}
+
+rectangle "Gestion productos" {
+  usecase "volver" as SMAGP1
+  usecase "Alta producto" as SMAGP2
+  usecase "Agregar existencias" as SMAGP3
+  usecase "Actualizar precio" as SMAGP4
+}
+
+rectangle "Consulta sistema" {
+  usecase "volver" as SMACS1
+  usecase "Consulta Usuarios" as SMACS2
+  usecase "Consulta clientes" as SMACS3
+  usecase "Consulta Administradores" as SMACS4
+  usecase "Consulta Representantes" as SMACS5
+  usecase "Consulta producto" as SMACS6
+  usecase "Consulta existencias" as SMACS7
+  usecase "Lista de precios" as SMACS8
+}
+
+
+
+AdministradorSistema --|> MA1
+AdministradorSistema --|> MA2
+AdministradorSistema --|> MA3
+AdministradorSistema --|> MA4 
+AdministradorSistema --|> MA5
+
+
+MA2 --|> SMAGU1 
+MA2 --|> SMAGU2
+MA2 --|> SMAGU3
+MA2 --|> SMAGU4
+MA2 --|> SMAGU5
+
+MA3 --|> SMAGP1 
+MA3 --|> SMAGP2
+MA3 --|> SMAGP3
+MA3 --|> SMAGP4
+
+MA4 --|> SMACS1 
+MA4 --|> SMACS2
+MA4 --|> SMACS3
+MA4 --|> SMACS4
+MA4 --|> SMACS5
+MA4 --|> SMACS6
+MA4 --|> SMACS7
+MA4 --|> SMACS8
